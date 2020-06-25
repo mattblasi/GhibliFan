@@ -14,6 +14,10 @@ let tomatometer = {
 
 class VideoCard extends Component {
 
+    state = {
+        width: window.innerWidth
+    };
+
     handleMovieClick = () => {
         const {
             movie,
@@ -26,6 +30,18 @@ class VideoCard extends Component {
         resetMovieLoaded();
     }
 
+    updateDimensions = () => {
+        this.setState({ width: window.innerWidth });
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateDimensions);
+    }
+
     render() {
         const {
             movie,
@@ -36,7 +52,7 @@ class VideoCard extends Component {
 
         movie.image_path = images.base_url;
 
-        const background = (feature && window.innerWidth > 768) ? movie.image_path + "original" + movie.backdrop_path : movie.image_path + "w500" + movie.poster_path;
+        const background = (feature && this.state.width > 768) ? movie.image_path + "original" + movie.backdrop_path : movie.image_path + "w500" + movie.poster_path;
 
         return (
             <div

@@ -9,8 +9,7 @@ class Poster extends Component {
         super(props);
         this.state = {
             imageStatus: "loading",
-            imageSource: this.props.image,
-            cssClass: "hidden"
+            cssClass: "is-hidden"
         }
     }
 
@@ -20,7 +19,7 @@ class Poster extends Component {
     }
 
     handleImageError() {
-        this.setState({ imageStatus: "error", imageSource: noImage });
+        this.setState({ imageStatus: "error" });
     }
 
     render() {
@@ -28,7 +27,7 @@ class Poster extends Component {
             <React.Fragment>
                 <img
                     className={this.state.cssClass + " poster"}
-                    src={this.state.imageSource}
+                    src={this.props.image}
                     alt={this.props.title}
                     onLoad={() => this.handleImageLoaded()}
                     onError={() => this.handleImageError()}
