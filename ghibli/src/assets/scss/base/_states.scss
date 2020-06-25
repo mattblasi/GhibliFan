@@ -1,0 +1,22 @@
+
+
+a {
+    color: #eee;
+}
+
+.is-loading {
+    opacity: 0;
+}
+
+.is-visible {
+    opacity: 1;
+}
+
+.is-rounded {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.transition-opacity {
+    transition: opacity .25s ease;
+}
