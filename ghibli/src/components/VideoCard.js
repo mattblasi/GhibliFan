@@ -36,7 +36,7 @@ class VideoCard extends Component {
 
         movie.image_path = images.base_url;
 
-        const background = (feature) ? movie.image_path + "original" + movie.backdrop_path : movie.image_path + "w500" + movie.poster_path;
+        const background = (feature && window.innerWidth > 768) ? movie.image_path + "original" + movie.backdrop_path : movie.image_path + "w500" + movie.poster_path;
 
         return (
             <div
